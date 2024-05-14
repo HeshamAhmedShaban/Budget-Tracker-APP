@@ -1,12 +1,14 @@
+import { AuthService } from './../../core/services/auth.service';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../../core/services/auth.service';
+import { CommonModule } from '@angular/common';
+import { Iuser_register } from '../../core/models/iuser';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule,RouterModule],
+  imports: [FormsModule,RouterModule,CommonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -29,13 +31,30 @@ loginObj: any = {
   "password": ""
 }
 
-constructor(private authService:AuthService, private router:Router) { }
+constructor(private _authService:AuthService, private router:Router) { }
 
 
 createUser(){
-
+  this._authService.createUser(this.register).subscribe((res:any)=>{
+  // console.log(res);
+  if(res.result){
+  }else{
+    alert(res.message);
+  }
+  })
 }
 
-onLogin(){}
-
+onLogin(){
+  this._authService.loginUser(this.loginObj).subscribe((res:any)=>{
+    console.log(res);
+    if(res.result){
+      localStorage.setItem('badgetUser',JSON.stringify(res.data));
+      this.router.navigate(['/home'])
+    }
+    else{
+      alert(res.message);
+    }
+  })
+}
+  
 }
