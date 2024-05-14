@@ -24,6 +24,8 @@
         <li class="nav-item">
           <a class="nav-link text-white" routerLink="/register" routerLinkActive="My_active">Login</a>
         </li>
+        <button class="btn btn-outline-danger ms-3" (click)="changeRoute()">{{userLoged?'LogOut':'Login'}}</button>
+        <!-- <button class="btn btn-outline-danger ms-5">LogOut</button> -->
           
       </ul>
 

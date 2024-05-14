@@ -46,8 +46,10 @@ createUser(){
 
 onLogin(){
   this._authService.loginUser(this.loginObj).subscribe((res:any)=>{
-    console.log(res);
+    // console.log(res);
     if(res.result){
+      this._authService.userData=res.data
+      console.log(this._authService.userData);
       localStorage.setItem('badgetUser',JSON.stringify(res.data));
       this.router.navigate(['/home'])
     }
