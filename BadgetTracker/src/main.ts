@@ -6,8 +6,7 @@ import { importProvidersFrom } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
-// bootstrapApplication(AppComponent, appConfig)
-//   .catch((err) => console.error(err));
+
 bootstrapApplication(AppComponent, {
   providers: [
                 provideProtractorTestingSupport(),
@@ -17,10 +16,3 @@ bootstrapApplication(AppComponent, {
                 provideHttpClient()
             ]
 }).catch((err) => console.error(err));
-
-  // bootstrapApplication(AppComponent, {
-  //   providers: [   
-  //                   provideProtractorTestingSupport(),
-  //                   provideRouter(routeConfig),
-  //               ]
-  //   }).catch((err) => console.error(err));

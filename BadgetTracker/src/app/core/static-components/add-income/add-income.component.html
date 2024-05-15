@@ -14,7 +14,7 @@
     </div>
   <div class="row">
     <mat-form-field appearance="outline" class="example-form-field">
-      <mat-label>Education</mat-label>
+      <mat-label>Select Category</mat-label>
       <mat-select name="categoryId" [(ngModel)]="transcationObj.categoryId" >
         @for (item of categoryList; track item) {
           <mat-option [value]="item.categoryId">{{item.categoryName}}</mat-option>
@@ -40,7 +40,7 @@
   <div mat-dialog-actions class="action">
     <button mat-raised-button color="warn" mat-dialog-close="false">Cancel</button>
     <!-- <button mat-raised-button color="primary" type="submit" [disabled]="!employeeForm.valid">{{editData ? 'Update' : 'Add'}}</button> -->
-    <button mat-raised-button color="primary" type="submit" >Add</button>
+    <button mat-raised-button color="primary" type="submit"  (click)="addIncome()">Add</button>
 
   </div>
 </form>
