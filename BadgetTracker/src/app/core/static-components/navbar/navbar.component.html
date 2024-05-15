@@ -7,24 +7,22 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
-          <a class="nav-link  text-white" aria-current="page" routerLink="/home" routerLinkActive="My_active">Home</a>
+          <a class="nav-link  text-white ms-2" aria-current="page" routerLink="/home" routerLinkActive="My_active">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/profile" routerLinkActive="My_active">Profile</a>
+          <a class="nav-link text-white ms-2" routerLink="/profile" routerLinkActive="My_active">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/dashboard" routerLinkActive="My_active">Dashboard</a>
+          <a class="nav-link text-white ms-2" routerLink="/dashboard" routerLinkActive="My_active">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/espense" routerLinkActive="My_active">Espense</a>
+          <a class="nav-link text-white ms-2" routerLink="/espense" routerLinkActive="My_active">Espense</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/income" routerLinkActive="My_active">Income</a>
+          <a class="nav-link text-white ms-2" routerLink="/income" routerLinkActive="My_active">Income</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/register" routerLinkActive="My_active">Login</a>
-        </li>
-        <button class="btn btn-outline-danger ms-3" (click)="changeRoute()">{{userLoged?'LogOut':'Login'}}</button>
+        
+        <button class="btn btn-outline-danger ms-4" (click)="changeRoute()">{{userLoged?'LogOut':'Login'}}</button>
         <!-- <button class="btn btn-outline-danger ms-5">LogOut</button> -->
           
       </ul>

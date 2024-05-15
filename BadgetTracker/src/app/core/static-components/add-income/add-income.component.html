@@ -1,0 +1,46 @@
+<div mat-dialog-title>
+  <h1 class="text-center">New Transcation</h1>
+</div>
+<form >
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline" class="example-form-field">
+        <mat-label>Date </mat-label>
+        <input matInput [matDatepicker]="picker" name="date" [(ngModel)]="transcationObj.date" placeholder="Choose a date">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  <div class="row">
+    <mat-form-field appearance="outline" class="example-form-field">
+      <mat-label>Education</mat-label>
+      <mat-select name="categoryId" [(ngModel)]="transcationObj.categoryId" >
+        @for (item of categoryList; track item) {
+          <mat-option [value]="item.categoryId">{{item.categoryName}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="outline" class="example-form-field">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" name="amount" [(ngModel)]="transcationObj.amount" placeholder="Enter your experiancy" >
+      <!-- <mat-error *ngIf="experience?.hasError('required')">Experience is required</mat-error> -->
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="outline" class="example-form-field">
+      <mat-label>Purpose</mat-label>
+      <textarea matInput type="text" name="purpose" [(ngModel)]="transcationObj.purpose" placeholder="Ex. Purpose..."></textarea>
+      <mat-hint>In rupees</mat-hint>
+    </mat-form-field>
+  </div>
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button color="warn" mat-dialog-close="false">Cancel</button>
+    <!-- <button mat-raised-button color="primary" type="submit" [disabled]="!employeeForm.valid">{{editData ? 'Update' : 'Add'}}</button> -->
+    <button mat-raised-button color="primary" type="submit" >Add</button>
+
+  </div>
+</form>
