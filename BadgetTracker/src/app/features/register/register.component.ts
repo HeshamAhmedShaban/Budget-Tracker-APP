@@ -16,14 +16,14 @@ export class RegisterComponent {
 
   isLogin:boolean= false;
 
-  register: any = { 
+  register: any = {
     "userId": 0,
     "userName":"",
     "emailId":"",
     "fullName":"",
     "role":"",
     "createdDate": new Date(),
-    "password":"" 
+    "password":""
 }
 
 loginObj: any = {
@@ -46,7 +46,7 @@ createUser(){
 
 onLogin(){
   this._authService.loginUser(this.loginObj).subscribe((res:any)=>{
-    // console.log(res);
+    console.log(res);
     if(res.result){
       this._authService.userData=res.data
       console.log(this._authService.userData);
@@ -58,5 +58,5 @@ onLogin(){
     }
   })
 }
-  
+
 }

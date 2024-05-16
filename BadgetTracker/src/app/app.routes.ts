@@ -7,6 +7,7 @@ import { ExpenseComponent } from './features/expense/expense.component';
 import { IncomeComponent } from './features/income/income.component';
 import { Routes as Route } from './core/enums/routes';
 import { userAuthGuard } from './core/guards/user-auth.guard';
+import { NavbarComponent } from './core/static-components/navbar/navbar.component';
 
 
 
@@ -18,5 +19,7 @@ export const routeConfig: Routes = [
   {path:Route.INCOME,component:IncomeComponent,title:'Income',canActivate:[userAuthGuard]},
   {path:'',redirectTo:Route.REGISTER, pathMatch:'full'},
   {path:Route.REGISTER,component:RegisterComponent,title:'Register'},
-
+  {path:'',component:NavbarComponent,children:[
+  {path:Route.HOME,component:HomeComponent,title:'Home',canActivate:[userAuthGuard]},
+  ]},
 ];

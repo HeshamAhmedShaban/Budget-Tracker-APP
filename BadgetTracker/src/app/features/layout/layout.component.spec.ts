@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddIncomeComponent } from './add-income.component';
+import { LayoutComponent } from './layout.component';
 
-describe('AddIncomeComponent', () => {
-  let component: AddIncomeComponent;
-  let fixture: ComponentFixture<AddIncomeComponent>;
+describe('LayoutComponent', () => {
+  let component: LayoutComponent;
+  let fixture: ComponentFixture<LayoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddIncomeComponent]
+      imports: [LayoutComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AddIncomeComponent);
+    fixture = TestBed.createComponent(LayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

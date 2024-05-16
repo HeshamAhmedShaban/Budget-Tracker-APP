@@ -6,9 +6,9 @@
                   <h3>Income</h3>
               </div>
               <div class="col-6 text-end">
-                  <button class="btn btn-warning" (click)="openAddIncomeForm()">Add New</button>
+                  <button class="btn btn-warning" (click)="openModel()" >Add New</button>
               </div>
-          </div> 
+          </div>
           <div class="">
               <div class="row">
                 @for (item of transcationList; track $index) {
@@ -23,22 +23,26 @@
                       </div>
                 </div>
                 }
+
+
+
               </div>
           </div>
       </div>
   </div>
 </div>
 
-<!-- <div class="modal" id="myModal">
+<div class="modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
 
-    
+      <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">New Transcation</h4>
-        <button type="button" class="btn-close"   ></button>
+        <button type="button" class="btn-close" (click)="closeModel()"  ></button>
       </div>
 
+      <!-- Modal body -->
       <div class="modal-body">
         <div class="row">
           <div class="col-6">
@@ -51,7 +55,7 @@
                   <option value="">Select</option>
                   @for (item of categoryList; track $index) {
                     <option [value]="item.categoryId">{{item.categoryName}}</option>
-                  } 
+                  }
               </select>
           </div>
           <div class="col-6">
@@ -65,12 +69,12 @@
         </div>
       </div>
 
-      
+      <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" >Close</button>
-        <button type="button" class="btn btn-success" >Save</button>
+        <button type="button" class="btn btn-danger"  (click)="closeModel()"  >Close</button>
+        <button type="button" class="btn btn-success" (click)="onSave()">Save</button>
       </div>
 
     </div>
   </div>
-</div> -->
+</div>

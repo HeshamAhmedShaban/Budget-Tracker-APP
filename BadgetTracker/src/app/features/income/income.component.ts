@@ -1,40 +1,80 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar'
-import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
-import {MatBadgeModule} from '@angular/material/badge';
-import { AddIncomeComponent } from '../../core/static-components/add-income/add-income.component';
 import { TransactionsService } from '../../core/services/transactions.service';
+import { Itransaction } from '../../core/models/itransaction';
 
 @Component({
   selector: 'app-income',
   standalone: true,
-  imports: [FormsModule,CommonModule,MatIconModule,AddIncomeComponent,ReactiveFormsModule,MatIconModule,MatDividerModule,MatButtonModule,MatToolbarModule,MatBadgeModule],
+  imports: [FormsModule,CommonModule,ReactiveFormsModule],
   templateUrl: './income.component.html',
   styleUrl: './income.component.css'
 })
 export class IncomeComponent implements OnInit {
 
+  @Input() masterId: number = 0;
+
+  transcationObj : Itransaction = {
+    "transactionId": 0,
+    "userId": 0,
+    "categoryId": 0,
+    "amount": 0,
+    "date": "2024-05-04T10:47:53.460Z",
+    "purpose": "",
+    "transactionTypeId": 0
+  }
+  categoryList: any[]=[];
   transcationList: any[]=[];
-  user!:{}
-  constructor (private _dialog: MatDialog,private _transactionService:TransactionsService){ 
-    const userLogged = localStorage.getItem('badgetUser');
-    if(userLogged !=null){
-      this.user = JSON.parse(userLogged)
+  constructor (private _transactionService:TransactionsService){
+    const loggedUser =  sessionStorage.getItem('budgetUser');
+    if(loggedUser != null) {
+      this.transcationObj.userId =  JSON.parse(loggedUser).userId;
     }
   }
 
   ngOnInit(): void {
-    
-  }
-  public openAddIncomeForm() {
-    this._dialog.open(AddIncomeComponent)
+    this.getAllTranscations();
   }
 
-  
+  public getCategoryByUser() {
+    this._transactionService.getCategoryByUserIdd(this.transcationObj.userId).subscribe((res:any)=>{
+      this.categoryList = res.data;
+    })
+  }
+  public getAllTranscations() {
+    this._transactionService.getTranscationByTypeId(this.masterId, this.transcationObj.userId).subscribe((res:any)=>{
+      this.transcationList = res.data;
+    })
+  }
+  public onSave() {
+    debugger;
+    this.transcationObj.transactionTypeId = this.masterId;
+    this._transactionService.addNewTranscation(this.transcationObj).subscribe((res:any)=>{
+      if(res.result) {
+        alert('Item Addedd Succes');
+        this.getAllTranscations();
+        this.closeModel();
+      } else {
+        alert(res.message)
+      }
+    })
+  }
+  public openModel() {
+    this.getCategoryByUser();
+    const modal =  document.getElementById('myModal');
+    if(modal != null) {
+      modal.style.display = 'block'
+    }
+  }
+
+  public closeModel() {
+    const modal =  document.getElementById('myModal');
+    if(modal != null) {
+      modal.style.display = 'none'
+    }
+  }
+
+
 
 }

@@ -21,13 +21,18 @@
         <li class="nav-item">
           <a class="nav-link text-white ms-2" routerLink="/income" routerLinkActive="My_active">Income</a>
         </li>
-        
+
         <button class="btn btn-outline-danger ms-4" (click)="changeRoute()">{{userLoged?'LogOut':'Login'}}</button>
         <!-- <button class="btn btn-outline-danger ms-5">LogOut</button> -->
-          
+
       </ul>
 
     </div>
   </div>
 </nav>
+
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
 
